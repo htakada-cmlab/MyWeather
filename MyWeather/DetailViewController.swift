@@ -26,6 +26,7 @@ class DetailViewController: UIViewController {
 
         // Do any additional setup after loading the view.
         guard detailItem != nil else { return }
+
         let urlString = "https://openweathermap.org/img/w/" + detailItem!["icon"]! + ".png"
         if let url = URL(string: urlString) {
             if let data = try? Data(contentsOf: url) {
@@ -39,7 +40,7 @@ class DetailViewController: UIViewController {
         html += "<style> body { font-size: 100%; } </style>"
         html += "</head>"
         html += "<body>"
-        html += "Weather: " + detailItem!["weather"]! + "<br/>" + "Temperature: " + detailItem!["temp"]!
+        html += "Weather: " + detailItem!["weather"]! + "<br/>" + "Temperature: " + detailItem!["temp"]! + "℃"
         html += "</body>"
         html += "</html>"
         webView.loadHTMLString(html, baseURL: nil)

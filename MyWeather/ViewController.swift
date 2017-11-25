@@ -37,7 +37,7 @@ class ViewController: UITableViewController {
                     
                     let weather = json["weather"][0]["description"].stringValue
                     let icon = json["weather"][0]["icon"].stringValue
-                    let temp = json["main"]["temp"].floatValue - 273.15
+                    let temp = Int(json["main"]["temp"].floatValue - 273.15)
                     vc.detailItem = ["weather": weather, "icon": icon, "temp": "\(temp)"]
                     navigationController?.pushViewController(vc, animated: true)
                 }
