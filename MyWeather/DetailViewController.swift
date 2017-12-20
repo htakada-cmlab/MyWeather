@@ -11,7 +11,7 @@ import WebKit
 
 class DetailViewController: UIViewController {
     @IBOutlet weak var imageView: UIImageView!
-    @IBOutlet weak var webView: WKWebView!
+    @IBOutlet weak var label: UILabel!
     var detailItem: [String: String]!
    
 /*
@@ -34,17 +34,10 @@ class DetailViewController: UIViewController {
             }
         }
 
-        var html = "<html>"
-        html += "<head>"
-        html += "<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">"
-        html += "<style> body { font-size: 100%; } </style>"
-        html += "</head>"
-        html += "<body>"
-        html += "Weather: " + detailItem!["weather"]! + "<br/>" + "Temperature: " + detailItem!["temp"]! + "℃"
-        html += "</body>"
-        html += "</html>"
-        webView.loadHTMLString(html, baseURL: nil)
-    }
+        label.numberOfLines = 2
+        label.text = "Weather: " + detailItem!["weather"]! + "\n" + "Temperature: " + detailItem!["temp"]! + "℃"
+        title = detailItem!["city"]
+     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
